@@ -1,1 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>私はロボットではありません</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ffffff">
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => console.log('SW registered: ', registration))
+                    .catch(registrationError => console.log('SW registration failed: ', registrationError));
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>私はロボットではありません</h1>
+    <img src="https://dailyportalz.jp/application/files/3216/2086/8763/DPZ_-2_-1.jpg" alt="認証画像">
+    <div>
+        <input type="text" id="captchaInput" placeholder="文字列を入力してください">
+        <button onclick="verifyCaptcha()">送信</button>
+    </div>
+    <div id="message" class="message"></div>
+    <script src="app.js"></script>
+</body>
+</html>
 
